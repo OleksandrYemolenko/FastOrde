@@ -40,10 +40,10 @@ public class MenuRecyclerAdapter extends RecyclerView.Adapter<MenuRecyclerAdapte
 
     public MenuRecyclerAdapter(Context context) {
         this.context = context;
-//        items.add(new MenuItem("Соки", "https://healthynibblesandbits.com/wp-content/uploads/2016/11/How-to-Cut-a-Pomegranate-FF.jpg", 0));
-//        items.add(new MenuItem("Пицца", "https://www.slivki.by/znijki-media/w522_322/default/1009921/146.jpg", 1));
-//        items.add(new MenuItem("Кофе", "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/701/coffee-mug-1493946797.jpg", 2));
-//        items.add(new MenuItem( "Стейки", "https://cdn.lifehacker.ru/wp-content/uploads/2018/05/20-laJfxakov-dlya-prigotovleniya-deJstvitelno-bozhestvennogo-steJka_1526682003-1140x570.jpg", 3));
+        items.add(new MenuItem("Соки", "https://healthynibblesandbits.com/wp-content/uploads/2016/11/How-to-Cut-a-Pomegranate-FF.jpg", 0));
+        items.add(new MenuItem("Пицца", "https://www.slivki.by/znijki-media/w522_322/default/1009921/146.jpg", 1));
+        items.add(new MenuItem("Кофе", "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/701/coffee-mug-1493946797.jpg", 2));
+        items.add(new MenuItem( "Стейки", "https://cdn.lifehacker.ru/wp-content/uploads/2018/05/20-laJfxakov-dlya-prigotovleniya-deJstvitelno-bozhestvennogo-steJka_1526682003-1140x570.jpg", 3));
 
         new AsyncRequest().execute();
     }

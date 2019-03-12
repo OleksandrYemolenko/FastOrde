@@ -72,12 +72,12 @@ public class MainActivity extends AppCompatActivity {
                     fragmentTransaction.replace(R.id.frame_layout, historyFragment);
                     fragmentTransaction.commit();
                     return true;
-                /*case R.id.navigation_settings:
+                case R.id.navigation_settings:
                     SettingsFragment settingsFragment = new SettingsFragment();
                     fragmentTransaction = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.frame_layout, settingsFragment);
                     fragmentTransaction.commit();
-                    return true; */
+                    return true;
             }
             return false;
         }

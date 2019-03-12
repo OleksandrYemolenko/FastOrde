@@ -13,7 +13,7 @@
         android:id="@+id/logIn"
         android:textSize="40dp"
         android:layout_marginTop="40dp"
-        android:textColor="@color/White"
+        android:textColor="@color/primaryDark"
         android:layout_gravity="center_horizontal"/>
 
     <LinearLayout
@@ -26,27 +26,30 @@
         android:layout_marginRight="20dp">
 
         <!-- Email Label -->
+
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="64dp"
-            android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/secondname"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:defaultFocusHighlightEnabled="false">
+            <EditText
+                android:id="@+id/secondname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:textColor="@color/White"
-                android:hint="Second name"/>
+                android:hint="Second name"
+                />
+
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="64dp"
-            android:layout_marginBottom="8dp">
+            android:layout_marginTop="64dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:defaultFocusHighlightEnabled="false">
             <EditText android:id="@+id/firstname"
                 android:layout_width="match_parent"
-                android:textColor="@color/White"
+                android:textColor="@color/primaryDark"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:hint="First name" />
@@ -55,18 +58,20 @@
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="64dp"
-            android:layout_marginBottom="8dp">
+            android:layout_marginTop="64dp"
+            android:layout_marginBottom="8dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:defaultFocusHighlightEnabled="false">
             <EditText android:id="@+id/phone"
-                android:textColor="@color/White"
+                android:textColor="@color/primaryDark"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="numberSigned"
+                android:inputType="phone"
                 android:hint="Phone number" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.v7.widget.AppCompatButton
-            android:textColor="@color/White"
+            android:textColor="@color/primaryDark"
             android:id="@+id/btn_login"
             android:layout_width="80dp"
             android:layout_height="wrap_content"

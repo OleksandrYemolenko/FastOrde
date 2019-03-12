@@ -47,15 +47,15 @@ public class DishRecyclerAdapter extends RecyclerView.Adapter<DishRecyclerAdapte
     public DishRecyclerAdapter(Context context) {
         this.context = context;
         category = MenuRecyclerAdapter.categoty;
-        new AsyncRequest().execute();
-//        if(MenuRecyclerAdapter.categoty == 0)
-//            this.items = DishActivity.items_1;
-//        else if(MenuRecyclerAdapter.categoty == 1)
-//            this.items = DishActivity.items_2;
-//        else if(MenuRecyclerAdapter.categoty == 2)
-//            this.items = DishActivity.items_3;
-//        else if(MenuRecyclerAdapter.categoty == 3)
-//            this.items = DishActivity.items_4;
+//        new AsyncRequest().execute();
+        if(MenuRecyclerAdapter.categoty == 0)
+            this.items = DishActivity.items_1;
+        else if(MenuRecyclerAdapter.categoty == 1)
+            this.items = DishActivity.items_2;
+        else if(MenuRecyclerAdapter.categoty == 2)
+            this.items = DishActivity.items_3;
+        else if(MenuRecyclerAdapter.categoty == 3)
+            this.items = DishActivity.items_4;
     }
     
     public void addAll(List<DishItem> items) {
