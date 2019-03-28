@@ -176,13 +176,15 @@ public class OrderPayActivity extends AppCompatActivity {
         date = Integer.toString(year) + "." + Integer.toString(month) + "." + Integer.toString(day);
 
         try {
-            if(Integer.valueOf(CartRecyclerAdapter.getTotalPrice()) != 0 && MainActivity.historyItems.indexOf(new HistoryItem(date, pri)) == -1)
+            if(Integer.valueOf(CartRecyclerAdapter.getTotalPrice()) != 0 && MainActivity.historyItems.indexOf(new HistoryItem(date, pri, MainActivity.cartItems)) == -1)
                 MainActivity.addItem(date, pri, MainActivity.cartItems);
         } catch (Exception e) {
             Toast.makeText(this, e.toString(), Toast.LENGTH_LONG).show();
         }
 
         //TODO отправлять запрос на оплату
+
+        MainActivity.resumeFromCart = true;
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

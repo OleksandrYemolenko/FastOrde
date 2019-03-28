@@ -53,7 +53,7 @@ public class ByPriceRecyclerAdapter extends RecyclerView.Adapter<ByPriceRecycler
 //
 //                if(MainActivity.allHistory == null)
 
-                MainActivity.cartItems = MainActivity.allHistory.get(position);
+                MainActivity.cartItems = MainActivity.historyItems.get(position).getItems();
 
 //                Toast.makeText(context, Integer.toString(MainActivity.cartItems.size()) + " " + Integer.toString(MainActivity.allHistory.get(position).size()), Toast.LENGTH_SHORT).show();
 

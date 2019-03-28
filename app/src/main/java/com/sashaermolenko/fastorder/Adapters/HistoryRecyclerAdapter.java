@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,21 +48,15 @@ public class HistoryRecyclerAdapter extends RecyclerView.Adapter<HistoryRecycler
     public void onBindViewHolder(@NonNull RecyclerViewHolder holder, final int position) {
         final HistoryItem historyItem = items.get(position);
 
-        holder.bind(historyItem);
+        holder.bind(historyItem, position);
 
         holder.itemView.setOnClickListener (new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-//                if(MainActivity.cartItems == null)
-//                    Toast.makeText(context, "Cart", Toast.LENGTH_SHORT).show();
-//
-//                if(MainActivity.allHistory == null)
-
-                MainActivity.cartItems = MainActivity.allHistory.get(position);
-
-//                Toast.makeText(context, Integer.toString(MainActivity.cartItems.size()) + " " + Integer.toString(MainActivity.allHistory.get(position).size()), Toast.LENGTH_SHORT).show();
-
+                if(MainActivity.cartItems != null && MainActivity.historyItems != null && MainActivity.historyItems.get(position).getItems() != null)
+                     MainActivity.cartItems.addAll(MainActivity.historyItems.get(position).getItems());
+                else
+                    Toast.makeText(context, "Это тестовый образец", Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -73,21 +68,31 @@ public class HistoryRecyclerAdapter extends RecyclerView.Adapter<HistoryRecycler
 
     public class RecyclerViewHolder extends RecyclerView.ViewHolder{
         private TextView price, date;
+        private RecyclerView recView;
+        private LinearLayoutManager manager;
+        private HistoryListRecyclerAdapter adapter;
 
         public RecyclerViewHolder(@NonNull View itemView) {
             super(itemView);
 
             price = (TextView) itemView.findViewById(R.id.price_hist);
             date = (TextView) itemView.findViewById(R.id.date);
+            recView = (RecyclerView) itemView.findViewById(R.id.historuListRecView);
 
             price.setTypeface(Typeface.createFromAsset(context.getAssets(), "Roboto-Thin.ttf"));
             date.setTypeface(Typeface.createFromAsset(context.getAssets(), "Roboto-Thin.ttf"));
         }
 
-        public void bind(final HistoryItem recyclerItem) {
+        public void bind(final HistoryItem recyclerItem, int position) {
 
             date.setText(recyclerItem.getDate());
             price.setText(recyclerItem.getPrice());
+
+            manager = new LinearLayoutManager(context);
+            adapter = new HistoryListRecyclerAdapter(context, position);
+
+            recView.setLayoutManager(manager);
+            recView.setAdapter(adapter);
         }
 
 

@@ -37,13 +37,13 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     public static int flag = 0;
+    public static boolean resumeFromCart = false;
     public static final String STORAGE_NAME = "STORAGE";
     private static Context context;
     private FrameLayout frameLayout;
     private BottomNavigationView navigation;
     public static ArrayList<CartItem> cartItems = new ArrayList<>();
-    public static ArrayList<HistoryItem> historyItems;
-    public static ArrayList<ArrayList<CartItem> > allHistory = new ArrayList<>();
+    public static ArrayList<HistoryItem> historyItems = new ArrayList<>();
     public static ArrayList<String> spots = new ArrayList<>();
     public static ArrayList<JSONObject> spotsObjects = new ArrayList<>();
 
@@ -70,12 +70,6 @@ public class MainActivity extends AppCompatActivity {
                     HistoryFragment historyFragment = new HistoryFragment();
                     fragmentTransaction = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.frame_layout, historyFragment);
-                    fragmentTransaction.commit();
-                    return true;
-                case R.id.navigation_settings:
-                    SettingsFragment settingsFragment = new SettingsFragment();
-                    fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction.replace(R.id.frame_layout, settingsFragment);
                     fragmentTransaction.commit();
                     return true;
             }
@@ -109,7 +103,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        save();
+        if(resumeFromCart){
+            save();
+            resumeFromCart = false;
+        }
     }
 
     private void bind() {
@@ -123,16 +120,9 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
 
         historyItems = getHistoryItems();
-        allHistory = getAllHistoryItems();
-
-        ArrayList<CartItem> cr = new ArrayList<>();
-
-        cr.add(new CartItem("asd", "asd", 0, "asd", "asd" ));
-
-//        historyItems = null;
 
         if(historyItems == null) {
-            addItem("asd", "asd", cr);
+            addItem("asd", "asd", null);
         }
 
         context = this;
@@ -146,15 +136,9 @@ public class MainActivity extends AppCompatActivity {
         return historyItems;
     }
 
-    private ArrayList<ArrayList<CartItem> > getAllHistoryItems() {
-        //importing all data into JSON objects array(phones) from database
-        ArrayList<ArrayList<CartItem> > historyItems = JSONHelper.importAllFromJSON(this);
-        return historyItems;
-    }
-
     public static void addItem(String date, String price, ArrayList<CartItem> list) {
 
-            HistoryItem hi = new HistoryItem(date, price);
+            HistoryItem hi = new HistoryItem(date, price, list);
             ArrayList<HistoryItem> his = new ArrayList<>();
             his.add(hi);
             if(historyItems != null) {
@@ -162,21 +146,9 @@ public class MainActivity extends AppCompatActivity {
             }
             historyItems = his;
 
-            ArrayList<ArrayList<CartItem> > allHistoryF = new ArrayList<>();
-
-            try {
-                allHistoryF.add(list);
-                if(allHistory != null)
-                    allHistoryF.addAll(allHistory);
-                allHistory = allHistoryF;
-            } catch(Exception e) {
-                Toast.makeText(context, e.toString(), Toast.LENGTH_LONG).show();
-            }
-
         for(int i = 1; i < historyItems.size(); ++i) {
             if(historyItems.get(i).getDate().length() == 3) {
                 historyItems.remove(i);
-                allHistory.remove(i);
                 break;
             }
         }
@@ -186,7 +158,9 @@ public class MainActivity extends AppCompatActivity {
 
         //exporting all received data into JSON object in database
 
-        boolean result = JSONHelper.exportToJSON(this, historyItems, allHistory);
+        Toast.makeText(this, Integer.toString(historyItems.size()), Toast.LENGTH_LONG).show();
+
+        boolean result = JSONHelper.exportToJSON(this, historyItems);
 
 //        if(result){
 //            Toast.makeText(this, "Данные сохранены", Toast.LENGTH_LONG).show();

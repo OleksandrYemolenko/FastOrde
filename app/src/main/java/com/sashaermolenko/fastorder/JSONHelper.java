@@ -18,14 +18,13 @@ class JSONHelper {
 
     private static final String FILE_NAME = "History.json";
 
-    static boolean exportToJSON(Context context, ArrayList<HistoryItem> dataList, ArrayList<ArrayList<CartItem> > allItems) {
+    static boolean exportToJSON(Context context, ArrayList<HistoryItem> dataList) {
 
         // JSON object
         Gson gson = new Gson();
-        // list of phones
+        // list of items
         DataItems dataItems = new DataItems();
         dataItems.setItems(dataList);
-        dataItems.setAllHistory(allItems);
         // Translating full JSON array into string
         String jsonString = gson.toJson(dataItems);
 
@@ -94,59 +93,15 @@ class JSONHelper {
         return null;
     }
 
-    static ArrayList<ArrayList<CartItem> > importAllFromJSON(Context context) {
-
-        InputStreamReader streamReader = null;
-        FileInputStream fileInputStream = null;
-        try{
-
-            // reading data from memory using file(FILE_NAME)
-
-            fileInputStream = context.openFileInput(FILE_NAME);
-            streamReader = new InputStreamReader(fileInputStream);
-            Gson gson = new Gson();
-            DataItems dataItems = gson.fromJson(streamReader, DataItems.class);
-
-            // writing all received data into list
-
-            return  dataItems.getAllHistory();
-        }
-        catch (IOException ex){
-            ex.printStackTrace();
-        }
-        finally {
-            if (streamReader != null) {
-                try {
-                    streamReader.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (fileInputStream != null) {
-                try {
-                    fileInputStream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-
-        return null;
-    }
-
     private static class DataItems {
         private ArrayList<HistoryItem> items;
-        private ArrayList<ArrayList<CartItem> > allHistory;
 
         ArrayList<HistoryItem> getItems() {
             return items;
         }
-        ArrayList<ArrayList<CartItem> > getAllHistory() {return allHistory;}
+
         void setItems(ArrayList<HistoryItem> items) {
             this.items = items;
-        }
-        void setAllHistory(ArrayList<ArrayList<CartItem> > allHistory) {
-            this.allHistory = allHistory;
         }
     }
 }
