@@ -57,4 +57,8 @@ public class CartItem extends Item {
     public boolean getVisOfFullName() {
         return showFullName;
     }
+
+    public String getFullName() {
+        return super.getName();
+    }
 }

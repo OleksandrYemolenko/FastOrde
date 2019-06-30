@@ -43,7 +43,6 @@ public class MenuFragment extends Fragment {
 
         adapter = new MenuRecyclerAdapter(getContext());
         recyclerView.setAdapter(adapter);
-
         return view;
     }
 

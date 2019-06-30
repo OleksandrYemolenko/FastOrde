@@ -5,24 +5,17 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
-import android.widget.TextView;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.sashaermolenko.fastorder.Fragments.CartFragment;
 import com.sashaermolenko.fastorder.Fragments.HistoryFragment;
 import com.sashaermolenko.fastorder.Fragments.MenuFragment;
-import com.sashaermolenko.fastorder.Fragments.SettingsFragment;
 import com.sashaermolenko.fastorder.Items.CartItem;
 import com.sashaermolenko.fastorder.Items.HistoryItem;
 import com.sashaermolenko.fastorder.Login.LoginActivity;
@@ -31,7 +24,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {

@@ -19,6 +19,7 @@ import java.util.List;
 
 public class HistoryListRecyclerAdapter extends RecyclerView.Adapter<HistoryListRecyclerAdapter.RecyclerViewHolder>{
 
+    private int position;
     private Context context;
     private ArrayList<CartItem> items = new ArrayList<>();
 
@@ -26,6 +27,8 @@ public class HistoryListRecyclerAdapter extends RecyclerView.Adapter<HistoryList
         this.context = context;
 
         items = MainActivity.historyItems.get(position).getItems();
+
+        this.position = position;
     }
 
     public void addAll(List<CartItem> items) {
@@ -47,10 +50,19 @@ public class HistoryListRecyclerAdapter extends RecyclerView.Adapter<HistoryList
 
         holder.bind(item);
 
+        final int pos = this.position;
+
         holder.itemView.setOnClickListener (new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "50", Toast.LENGTH_SHORT).show();
+
+                if(MainActivity.cartItems != null && MainActivity.historyItems != null && MainActivity.historyItems.get(pos).getItems() != null){
+                    MainActivity.cartItems.addAll(MainActivity.historyItems.get(pos).getItems());
+                    Toast.makeText(context, "Добавлено", Toast.LENGTH_LONG).show();
+                } else
+                    Toast.makeText(context, "Ошибка", Toast.LENGTH_LONG).show();
+
+
             }
         });
     }
@@ -79,7 +91,9 @@ public class HistoryListRecyclerAdapter extends RecyclerView.Adapter<HistoryList
 
         public void bind(final CartItem recyclerItem) {
 
-            title.setText(recyclerItem.getName());
+            recyclerItem.setExpanded(false);
+
+            title.setText(recyclerItem.getFullName());
 
             amount.setText(Integer.toString(recyclerItem.getAmount()));
         }

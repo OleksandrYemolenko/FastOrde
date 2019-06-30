@@ -30,10 +30,19 @@ public class HistoryRecyclerAdapter extends RecyclerView.Adapter<HistoryRecycler
     public HistoryRecyclerAdapter(Context context) {
         this.context = context;
         try {
-            if(MainActivity.historyItems.get(0).getDate() != "asd")
+            if(!MainActivity.historyItems.get(0).getDate().equals("asd"))
                 this.items = MainActivity.historyItems;
         }catch (Exception e) {
             Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
+        }
+
+        for(HistoryItem x : items){
+            if(x.getItemsCount() == 0){
+                MainActivity.historyItems.remove(x);
+                items.remove(x);
+                notifyDataSetChanged();
+                break;
+            }
         }
     }
 
@@ -54,7 +63,7 @@ public class HistoryRecyclerAdapter extends RecyclerView.Adapter<HistoryRecycler
             @Override
             public void onClick(View v) {
                 if(MainActivity.cartItems != null && MainActivity.historyItems != null && MainActivity.historyItems.get(position).getItems() != null)
-                     MainActivity.cartItems.addAll(MainActivity.historyItems.get(position).getItems());
+                    MainActivity.cartItems.addAll(MainActivity.historyItems.get(position).getItems());
                 else
                     Toast.makeText(context, "Это тестовый образец", Toast.LENGTH_LONG).show();
             }

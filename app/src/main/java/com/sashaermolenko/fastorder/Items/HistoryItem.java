@@ -24,6 +24,14 @@ public class HistoryItem extends Item {
         this.items = items;
     }
 
+    public int getItemsCount() {
+        try {
+            return items.size();
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+
     public String getPrice() {
         return price;
     }
