@@ -30,8 +30,9 @@ public class HistoryRecyclerAdapter extends RecyclerView.Adapter<HistoryRecycler
     public HistoryRecyclerAdapter(Context context) {
         this.context = context;
         try {
-            if(!MainActivity.historyItems.get(0).getDate().equals("asd"))
+            if(!MainActivity.historyItems.get(0).getDate().equals("asd")) {
                 this.items = MainActivity.historyItems;
+            }
         }catch (Exception e) {
             Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
         }

@@ -62,7 +62,7 @@ public class OrderPayActivity extends AppCompatActivity {
 
     private String date;
 
-    private String data[] = {"Out of restaurant", "In restaurant"};
+    private String data[] = {"С собой", "На месте"};
     private String spots[];
     public static int type_id = 0, spot_index = 0;
     public static HashMap<Integer, Integer> ids = new HashMap<>();

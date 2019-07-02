@@ -3,18 +3,92 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingRight="15dp"
-    android:paddingLeft="15dp"
-    android:background="@color/White"
+    android:background="@color/grey"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/White"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+        android:paddingRight="15dp"
+        android:paddingLeft="15dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:id="@+id/orderGet"
+            android:textColor="@color/colorBlack"
+            android:text="Подача заказа :"
+            android:layout_marginTop="8dp"/>
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:paddingBottom="5dp"
+            android:id="@+id/spinRes"
+            android:background="@drawable/buttonshape" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/White"
+        android:paddingRight="15dp"
+        android:paddingLeft="15dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorBlack"
+            android:layout_marginTop="20dp"
+            android:id="@+id/placeChoose"
+            android:textSize="18dp"
+            android:text="Выберите заведение :"/>
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:paddingBottom="5dp"
+            android:paddingRight="5dp"
+            android:background="@drawable/buttonshape"
+            android:id="@+id/spinResO"
+            android:layout_marginTop="20dp"/>
+
+        <ImageButton
+            android:id="@+id/mapB"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="end"
+            android:background="@drawable/maps_icon"
+            android:paddingBottom="5dp"
+            android:scaleType="centerInside"
+            android:textColor="@color/colorPrimaryDark" />
+    </LinearLayout>
+
+
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="top"
         android:padding="2dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/White"
+        android:paddingRight="15dp"
+        android:paddingLeft="15dp"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp">
 
         <TextView
             android:id="@+id/timeO"
@@ -37,60 +111,22 @@
             android:paddingRight="5dp"
             android:layout_margin="2dp"
             android:background="@drawable/buttonshape"
-            android:text="set time"
+            android:text="время выполнения"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="25dp" />
+            android:textSize="20sp" />
     </RelativeLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="18dp"
-        android:id="@+id/orderGet"
-        android:textColor="@color/colorBlack"
-        android:text="Подача заказа :"/>
-
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:paddingBottom="5dp"
-        android:id="@+id/spinRes"
-        android:background="@drawable/buttonshape" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorBlack"
-        android:layout_marginTop="20dp"
-        android:id="@+id/placeChoose"
-        android:textSize="18dp"
-        android:text="Выберите меcто :"/>
-
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:paddingBottom="5dp"
-        android:paddingRight="5dp"
-        android:background="@drawable/buttonshape"
-        android:id="@+id/spinResO"
-        android:layout_marginTop="20dp"/>
-
-    <ImageButton
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:paddingBottom="5dp"
-        android:id="@+id/mapB"
-        android:scaleType="centerInside"
-        android:background="@drawable/maps_icon"
-        android:layout_gravity="bottom"
-        android:textColor="@color/colorPrimaryDark"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:layout_marginTop="35dp">
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/White"
+        android:paddingRight="15dp"
+        android:paddingLeft="15dp"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp">
         <TextView
             android:id="@+id/fullPrice"
             android:layout_width="wrap_content"

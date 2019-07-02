@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
         new AsyncRequest().execute();
     }
 
-    private ArrayList<HistoryItem> getHistoryItems() {
+    public ArrayList<HistoryItem> getHistoryItems() {
         //importing all data into JSON objects array(phones) from database
         ArrayList<HistoryItem> historyItems = JSONHelper.importFromJSON(this);
         return historyItems;
